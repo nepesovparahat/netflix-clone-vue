@@ -1,11 +1,10 @@
 <template>
 <header class="header">
-    <div class="header__logo-box">
+   <div class="header__wrapper">
+        <nav class="header__menu">
         <router-link to='/' class="header__logo">
-        <img src="../../assets/images/Netflix-Logo.wine.svg" alt="header-logo">
+        <img src="../../assets/images/netflix.svg" alt="header-logo">
         </router-link>
-    </div>
-    <nav class="header__menu">
         <router-link to = '/' class="header__link">Home</router-link>
         <router-link to ='/tv' class="header__link">TV Shows</router-link>
         <router-link to = '/movies' class="header__link">Movies</router-link>
@@ -14,12 +13,14 @@
     <div class="header__options-container">
         <div class="header__search-box">
         <label class="header__search-content">
+            <img src="../../assets/images/search.svg" alt="svg-icon" class="header__search-icon">
             <input type="text" class="header__search-input" placeholder="Titles, people, genres" />
-        </label>
+        </label></div>
+        <span class="header__kid">KID</span>
         <img src="../../assets/images/vector.svg" alt="vector-icon" class="header__vector-icon" />
-        <a href="#" class="header__account">Account</a>
+        <span class="header__account">Account</span>
     </div>
-    </div>
+   </div>
 </header>
 </template>
 
@@ -31,34 +32,71 @@ export default {
 
 <style lang="scss">
 .header{
+    z-index:z-index(popup);
+    &__wrapper{
     display: flex;
     flex-direction: row;
+    align-items: center;
     position: fixed;
-    &__search{
-        width: 250px;
+    width: 100%;
+    padding:0 20px;
+    justify-content: space-between;
+    min-height: 70px;
+    background-color: #292626;
+    }
+    
+    &__search-box{
+        width: 300px;
         height: 25px;
     }
-    &__search-input{
-        width: 0px;
-        height: 30px;
-        border: none;
-        background-image: url('../../assets/images/search.svg');
-        background-position: 5px 5px;
-        padding: 0px 10px 0px 30px;
-        background-repeat: no-repeat;
-        border-radius: 5px;
-        padding: 5px 10px 5px 30px;
-        @include font-size(14);
-        transition: width .4s ease-in-out;
-        &:focus{
-            width: 220px;
-            border: 1px solid #ddd;
-        }
-    }
-    &__options-container{
+
+    &__search-content{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
     }
+
+    &__search-input{
+        width: 0;
+        border: none;
+        outline: none;
+        opacity: 0;
+        @include font-size(16);
+        transition: ease width 1s, ease opacity 1s;
+        border-radius: 5px;
+        float: right;
+
+        &:focus{
+            width: 250px;
+            opacity: 1;
+        }
+        
+    }
+
+    &__options-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 0.05;
+        color:$white;
+        cursor: pointer;
+    }
+
+    &__menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 0.1;
+       
+    }
+
+    &__link{
+        text-decoration: none;
+        color:$white;
+        @include font-size(18);
+    }
+
 }
 </style>
