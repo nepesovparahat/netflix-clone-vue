@@ -4,7 +4,7 @@ $breakpoints: (
   "desktop": 1240px,
 );
 
-@mixin mq($width, $type: min) {
+@mixin mq($width, $type: max) {
   @if map_has_key($breakpoints, $width) {
     $width: map_get($breakpoints, $width);
     @if $type == max {

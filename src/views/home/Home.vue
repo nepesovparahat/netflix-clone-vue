@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    home
     <h2>Netflix Orginals</h2>
     <div class="home__posters" v-for="mov in movie.value" :key="mov.id">
       <img
@@ -28,7 +27,6 @@ export default {
         .then((res) => res.data.results)
         .catch((error) => console.log(error));
       movie.value = apiData;
-      console.table(movie.value);
     }
     onMounted(() => {
       fetchMovieData();

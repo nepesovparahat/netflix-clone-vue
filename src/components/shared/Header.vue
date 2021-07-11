@@ -81,6 +81,9 @@ export default {
     margin: 0;
     padding: 0;
   }
+  &--bg{
+      background-color: #ddd;
+  }
 
   &__search-box {
     width: 300px;
