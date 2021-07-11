@@ -1,13 +1,7 @@
-<template>
-  tv
-</template>
+<template>tv</template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

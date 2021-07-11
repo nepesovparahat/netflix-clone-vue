@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import Main from './Main.vue'
-import router from './router';
+import { createApp } from "vue";
+import Main from "./Main.vue";
+import router from "./router";
 
-createApp(Main).use(router).mount('[app]');
+createApp(Main).use(router).mount("[app]");
