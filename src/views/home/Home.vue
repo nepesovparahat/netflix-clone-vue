@@ -1,39 +1,107 @@
 <template>
   <div class="home">
+    <div class="home__video-info">
+      <div class="home__video_desc">
+        <h3 class="home__desc-title">Black Widow</h3>
+        <span class="home__desc-text"
+          >Natasha Romanoff, also known as Black Widow, confronts the darker
+          parts of her ledger when a dangerous conspiracy with ties to her past
+          arises. Pursued by a force that will stop at nothing to bring her
+          down, Natasha must deal with her history as a spy and the broken
+          relationships left in her wake long before she became an
+          Avenger.</span
+        >
+        <div class="home__video-btn-box">
+          <button class="home__video-btn">
+            <img
+              src="@/assets/images/play.svg"
+              alt="play-icon"
+              class="home__btn-icon"
+            />
+            Play
+          </button>
+          <button class="home__video-btn home__video-btn--info">
+            <img
+              src="@/assets/images/info.svg"
+              alt="more-icon"
+              class="home__btn-icon"
+            />
+            More Info
+          </button>
+        </div>
+      </div>
+    </div>
     <h2>Netflix Orginals</h2>
-    <div class="home__posters" v-for="mov in movie.value" :key="mov.id">
-      <img
-        :src="apiImgUrl + mov.poster_path"
-        :alt="mov.name"
-        style="height: 300px"
-        class="home_posters-img"
-      />
+    <div>
+      <TrendingMovies :movieData="movieData" />
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import { ref, onMounted, reactive } from "vue";
+import TrendingMovies from "@/components/TrendingMovies.vue";
 export default {
+  name: "Home",
+  components: {
+    TrendingMovies,
+  },
   setup() {
-    let movie = reactive({});
-    let apiImgUrl = ref("http://image.tmdb.org/t/p/w500");
-    const API =
-      "https://api.themoviedb.org/4/discover/tv?api_key=50c79094310c91407e637dc17af4ce13&sort_by=popularity.desc&page=1&with_networks=213";
-    async function fetchMovieData() {
-      const apiData = await axios
-        .get(API)
-        .then((res) => res.data.results)
-        .catch((error) => console.log(error));
-      movie.value = apiData;
-    }
-    onMounted(() => {
-      fetchMovieData();
-    });
-    return { fetchMovieData, movie, apiImgUrl };
+    return {};
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.home {
+  &__video-info {
+    height: 680px;
+    background-image: url("https://image.tmdb.org/t/p/original//qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__video_desc {
+    margin: 0 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 600px;
+    max-width: 650px;
+    flex-direction: column;
+    color: $white;
+    padding: 10px;
+    @include font-size(22);
+  }
+  &__video-btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+    width: 300px;
+  }
+  &__video-btn {
+    width: 140px;
+    height: 40px;
+    background-color: $white;
+    color: $black;
+    @include font-size(16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    &--info {
+      background-color: rgba(133, 133, 133, 0.7);
+      color: $white;
+    }
+  }
+  &__btn-icon {
+    margin-right: 10px;
+  }
+}
+</style>
