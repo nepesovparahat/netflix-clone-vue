@@ -43,8 +43,18 @@
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
 export default {
   setup() {
+    const isScroll = ref(false);
+    function handleScroll() {
+      let scroll = !isScroll.value ? "header" : "header__nav-bg";
+      return scroll;
+    }
+    onMounted(() => {
+      handleScroll();
+    });
+    console.log(isScroll.value);
     return {};
   },
 };
@@ -81,8 +91,8 @@ export default {
     margin: 0;
     padding: 0;
   }
-  &--bg{
-      background-color: #ddd;
+  &--bg {
+    background-color: #ddd;
   }
 
   &__search-box {
