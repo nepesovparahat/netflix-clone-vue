@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="home__video-info">
-      <div class="home__video_desc">
+    <div class="home__movie-info">
+      <div class="home__movie_desc">
         <h3 class="home__desc-title">Black Widow</h3>
         <span class="home__desc-text"
           >Natasha Romanoff, also known as Black Widow, confronts the darker
@@ -11,8 +11,8 @@
           relationships left in her wake long before she became an
           Avenger.</span
         >
-        <div class="home__video-btn-box">
-          <button class="home__video-btn">
+        <div class="home__movie-btn-box">
+          <button class="home__movie-btn">
             <img
               src="@/assets/images/play.svg"
               alt="play-icon"
@@ -20,7 +20,7 @@
             />
             Play
           </button>
-          <button class="home__video-btn home__video-btn--info">
+          <button class="home__movie-btn home__movie-btn--info">
             <img
               src="@/assets/images/info.svg"
               alt="more-icon"
@@ -31,8 +31,8 @@
         </div>
       </div>
     </div>
-    <h2>Netflix Orginals</h2>
-    <div>
+    <h2 class="home__movie-title">Netflix Orginals</h2>
+    <div class="home__movie-list-trend">
       <TrendingMovies :movieData="movieData" />
     </div>
   </div>
@@ -53,14 +53,14 @@ export default {
 
 <style lang="scss">
 .home {
-  &__video-info {
+  &__movie-info {
     height: 680px;
     background-image: url("https://image.tmdb.org/t/p/original//qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
   }
-  &__video_desc {
+  &__movie_desc {
     margin: 0 80px;
     display: flex;
     align-items: flex-start;
@@ -72,14 +72,14 @@ export default {
     padding: 10px;
     @include font-size(22);
   }
-  &__video-btn-box {
+  &__movie-btn-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-right: 10px;
     width: 300px;
   }
-  &__video-btn {
+  &__movie-btn {
     width: 140px;
     height: 40px;
     background-color: $white;
@@ -102,6 +102,9 @@ export default {
   }
   &__btn-icon {
     margin-right: 10px;
+  }
+  &__movie-title {
+    margin-left: 50px;
   }
 }
 </style>

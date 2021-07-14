@@ -62,7 +62,8 @@ export default {
 
 <style lang="scss">
 .header {
-  z-index: z-index(popup);
+  z-index: z-index(first);
+  position: relative;
   &__wrapper {
     display: flex;
     flex-direction: row;
