@@ -10,7 +10,7 @@
           />
         </a>
         <a href="#" class="footer__link">Questions? Ask us</a>
-        <a href="#" class="footer__link">Frequently Asked Questions</a>
+        <a href="#" class="footer__link">Frequently A.Questions</a>
         <a href="#" class="footer__link">Help Center</a>
       </div>
       <div class="footer__link-container">
@@ -61,7 +61,7 @@ footer {
     justify-self: center;
     grid-template-columns: repeat(1, 1fr);
     @include mq(tablet) {
-      justify-self: stretch;
+      justify-self: center;
     }
     @include font-size(16);
   }

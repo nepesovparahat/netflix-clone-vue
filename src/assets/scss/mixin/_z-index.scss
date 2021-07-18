@@ -1,4 +1,4 @@
-$z-indexes: ("first", "popup", "main");
+$z-indexes: ("header", "popup", "main");
 
 @function z-index($name) {
   @if index($z-indexes, $name) {

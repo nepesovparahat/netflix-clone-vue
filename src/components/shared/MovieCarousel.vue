@@ -2,33 +2,19 @@
   <div class="carousel">
     <h2 class="carousel__title">{{ carouselTitle }}</h2>
     <div class="carousel__container">
-      <button
-        class="carousel__slide-btn back"
-        v-if="isActive"
-        @click="distanceLeft"
-      >
+      <button class="carousel__slide-btn back" :disabled="backBtnActive" @click="distanceLeft">
         ⟨
       </button>
       <div class="carousel__wrapper" ref="carouselList">
-        <div
-          class="carousel__item"
-          v-for="movie in trendingMoviesData"
-          :key="movie.id"
-        >
-          <div class="carousel__poster">
-            <img
-              :src="baseImgUrl + movie.backdrop_path"
-              alt="image"
-              class="carousel__poster-img"
-            />
+        <div class="carousel__item" v-for="movie in carouselMoviesData" :key="movie.id">
+          <div v-if="movie.backdrop_path" class="carousel__poster">
+            <router-link :to="`/movie/${movie.id}`">
+              <img :src="baseImgUrl + movie.backdrop_path" alt="image" class="carousel__poster-img"/>
+            </router-link>
           </div>
         </div>
       </div>
-      <button
-        class="carousel__slide-btn next"
-        v-if="!isActive"
-        @click="distanceRight"
-      >
+      <button class="carousel__slide-btn next" :disabled="nextBtnActive" @click="distanceRight">
         ⟩
       </button>
     </div>
@@ -38,44 +24,59 @@
 <script>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import env from "@/env";
 export default {
-  props: ["title", "fetchUrl"],
+  props: ["params"],
+
   setup(props) {
-    let carouselTitle = props.title;
+    let carouselTitle = props.params.title;
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
-    let trendingMoviesData = ref([]);
+    const baseUrl = "https://api.themoviedb.org/3";
+    let carouselMoviesData = ref([]);
     let carouselList = ref("");
-    let isActive = ref(false);
-    console.log(props.fetchUrl);
-    async function fetchTrendMovie() {
+    let nextBtnActive = ref(false);
+    let backBtnActive = ref(true);
+
+    async function fetchMovie() {
       const movieData = await axios
-        .get(props.fetchUrl)
+        .get(
+          `${baseUrl}/discover/${props.params.typedName}?api_key=${env.apiKey}&with_genres=${props.params.genres}`
+        )
         .then((res) => res.data.results)
         .catch((error) => console.log(error));
-      trendingMoviesData.value = movieData;
-      console.log(`trendingMoviesData.value`, trendingMoviesData.value);
+      carouselMoviesData.value = movieData;
+      console.log(`carouselMoviesData.value`, carouselMoviesData.value);
     }
+
     function distanceLeft() {
       let distance = carouselList.value.getBoundingClientRect().x - 50;
       carouselList.value.style.transform = `translateX(${distance + 1470}px)`;
-      if (distance >= -1470) isActive.value = false;
+      if (distance >= -1470) {
+        backBtnActive.value = true;
+        nextBtnActive.value = false;
+      }
     }
+
     function distanceRight() {
+      backBtnActive.value = false;
       let distance = carouselList.value.getBoundingClientRect().x - 50;
       carouselList.value.style.transform = `translateX(${distance - 1470}px)`;
-      if (distance <= -2940) isActive.value = true;
-      console.log(`distance`, distance);
+      if (distance <= -2940) {
+        nextBtnActive.value = true;
+      }
     }
+
     onMounted(() => {
-      fetchTrendMovie();
+      fetchMovie();
     });
     return {
       distanceLeft,
       distanceRight,
-      isActive,
+      nextBtnActive,
+      backBtnActive,
       carouselList,
       baseImgUrl,
-      trendingMoviesData,
+      carouselMoviesData,
       carouselTitle,
     };
   },
@@ -83,35 +84,35 @@ export default {
 </script>
 <style lang="scss">
 .carousel {
-  &__title{
-    margin:20px 50px;
+  &__title {
+    margin: 20px 50px;
   }
+
   &__container {
     overflow: hidden;
     position: relative;
     margin: 0 50px 20px 50px;
   }
+
   &__wrapper {
     display: flex;
     flex-direction: row;
     width: max-content;
-    z-index: z-index(popup);
     transform: translateX(0);
     transition: 0.5s ease;
   }
-  &__item {
-    display: flex;
-    justify-self: center;
-  }
+
   &__poster {
     width: 250px;
     margin-right: 45px;
   }
+
   &:hover {
     .carousel__slide-btn {
-      display: flex;
+      display: block;
     }
   }
+
   &__poster-img {
     object-fit: cover;
     width: 100%;
@@ -128,7 +129,7 @@ export default {
     display: none;
     align-items: center;
     justify-content: center;
-    @include font-size(70);
+    @include font-size(50);
     position: absolute;
     background-color: rgba($color: #5555550c, $alpha: 0.4);
     color: $white;
@@ -139,9 +140,11 @@ export default {
     cursor: pointer;
     z-index: z-index(popup);
   }
+
   .back {
     left: 0;
   }
+
   .next {
     right: 0;
   }
