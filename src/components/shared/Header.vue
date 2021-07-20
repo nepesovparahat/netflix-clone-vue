@@ -203,7 +203,6 @@ export default {
   &__account {
     display: flex;
     align-items: center;
-    @include mq(table);
   }
   &__profile-avatar {
     width: 1.5rem;

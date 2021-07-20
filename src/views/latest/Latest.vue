@@ -1,8 +1,8 @@
 <template>
   <div class="latest">
     <Hero :params="paramsUrl[0]" />
-    <div class="latest__movie-carousel">
-      <MovieCarousel
+    <div class="latest__movie-swiper">
+      <MovieSwiper
         :params="params"
         v-for="params in paramsUrl"
         :key="params.id"
@@ -12,20 +12,20 @@
 </template>
 
 <script>
-import MovieCarousel from "@/components/shared/MovieCarousel.vue";
+import MovieSwiper from "@/components/shared/MovieSwiper.vue";
 import Hero from "@/components/shared/Hero.vue";
 export default {
-  name: "Home",
+  name:"Latest",
   components: {
-    MovieCarousel,
+    MovieSwiper,
     Hero,
   },
   setup() {
     let paramsUrl = [
-      { typedName: "movie", title: "Family", genres: 10751 },
-      { typedName: "movie", title: "Fantasy", genres: 14 },
-      { typedName: "movie", title: "History", genres: 36 },
-      { typedName: "movie", title: "Romance", genres: 10749 },
+      { title: "Family", genres: 10751 },
+      { title: "Fantasy", genres: 14 },
+      { title: "History", genres: 36 },
+      { title: "Western", genres: 37 },
     ];
     return { paramsUrl };
   },

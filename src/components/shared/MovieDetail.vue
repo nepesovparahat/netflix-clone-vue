@@ -25,11 +25,6 @@
                   </span>
               </div>
             </div>
-            <div class="movie-detail__trailer">
-              <div v-if="trailerId" @click="show" class="detail-content">
-                <i class="fas fa-play"></i> Play Trailer
-              </div>
-            </div>
           </div>
           <div class="movie-detail__overview">
             <div class="movie-detail__subtitle">Overview</div>
@@ -44,10 +39,11 @@
 <script>
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import env from "@/env.js";
 import axios from "axios";
 export default {
+  name: "MovieDetail",
   setup() {
+    const apiKey = import.meta.env.VITE_KEY;
     const movieDetail = ref([]);
     const movieId = useRoute();
     let backdrop = ref("");
@@ -78,9 +74,10 @@ export default {
 
     async function fetctmovieDetail() {
       const detailData = await axios
-        .get(`${baseUrl}/movie/${movieId.params.id}?api_key=${env.apiKey}&language=en-US&append_to_response=videos,credits,release_dates,similar,images`)
+        .get(`${baseUrl}/movie/${movieId.params.id}?api_key=${apiKey}&language=en-US&append_to_response=videos,credits,release_dates,similar,images`)
         .then((res) => res.data)
         .catch((error) => console.log(error));
+
       movieDetail.value = detailData;
       title.value = movieDetail.value.original_title;
       overview.value = movieDetail.value.overview;
@@ -167,10 +164,11 @@ export default {
     height: 450px;
     display: flex;
     @include mq(tablet) {
-      padding: 20px 0;
-      height: 550px;
+      padding: 70px 0;
+      height: 650px;
     }
   }
+  
 
   &__poster {
     height: 450px;
@@ -218,7 +216,6 @@ export default {
       width: 100%;
     }
   }
-
   &__genre-text {
     margin-right: 15px;
     white-space: nowrap;

@@ -35,7 +35,7 @@ export default {
     let swiperMoviesData = ref([]);
     let swiperList = ref("");
     let breakpoints = {
-"640": {
+  "640": {
     "slidesPerView": 2,
     "spaceBetween": 20,
     "slidesPerGroup":2
@@ -59,13 +59,10 @@ export default {
         .then((res) => res.data.results)
         .catch((error) => console.log(error));
       swiperMoviesData.value = movieData;
-      console.log(`swiperMoviesData.value`, swiperMoviesData.value);
     }
 
     onMounted(() => {
       fetchMovie();
-
-      console.log(`apiKey`, apiKey)
     });
     return {
       swiperList,

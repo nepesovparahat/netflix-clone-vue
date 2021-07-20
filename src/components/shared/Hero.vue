@@ -2,7 +2,7 @@
   <div class="hero">
     <div class="hero__movie-info" :style="{'background-image': 'url(' + baseImgUrl + heroData.poster_path + ')'}">
       <div class="hero__movie_desc">
-        <h2 class="hero__desc-title">{{ heroData.title }}</h2>
+        <h2 class="hero__desc-title">{{ heroData.title || heroData.name}}</h2>
         <p class="hero__desc-text">{{ heroData.overview }}</p>
         <div class="hero__movie-btn-box">
           <button class="hero__movie-btn">
@@ -30,12 +30,12 @@
 <script>
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import env from "@/env";
 
 export default {
   props: ["params"],
 
   setup(props) {
+    const apiKey = import.meta.env.VITE_KEY;
     let baseImgUrl = ref("https://image.tmdb.org/t/p/original/");
     const baseUrl = "https://api.themoviedb.org/3";
     let heroData = ref([]);
@@ -43,7 +43,7 @@ export default {
     async function fetchTrendMovie() {
       const movieData = await axios
         .get(
-          `${baseUrl}/discover/${props.params.typedName}?api_key=${env.apiKey}&with_genres=${props.params.genres}`
+          `${baseUrl}/discover/movie?api_key=${apiKey}&with_genres=${props.params.genres}`
         )
         .then((res) => res.data.results)
         .catch((error) => console.log(error));
