@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import MovieSwiper from "@/components/shared/MovieSwiper.vue";
-import Hero from "@/components/shared/Hero.vue";
+import MovieSwiper from "@/components/swiper/MovieSwiper.vue";
+import Hero from "@/components/hero/Hero.vue";
 export default {
   name: "Movies",
   components: {

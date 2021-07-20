@@ -1,11 +1,13 @@
 <template>
   <header class="header">
     <div :class="[{ 'header__wrapper--bg': isScroll }, 'header__wrapper']">
-      <img
+     <router-link to="/">
+       <img
         src="@/assets/images/netflix.svg"
         alt="header-logo"
         class="header__logo"
       />
+     </router-link>
       <nav :class="[{ 'header__menu--active': isOpenMenu }, 'header__menu']">
         <router-link to="/" class="header__link">Home</router-link>
         <router-link to="/tv" class="header__link">TV Shows</router-link>

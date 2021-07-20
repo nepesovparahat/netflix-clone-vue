@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import MovieSwiper from "@/components/shared/MovieSwiper.vue";
-import Hero from "@/components/shared/Hero.vue";
+import MovieSwiper from "@/components/swiper/MovieSwiper.vue";
+import Hero from "@/components/hero/Hero.vue";
 export default {
   name:"Home",
   components: {
@@ -22,8 +22,8 @@ export default {
   },
   setup() {
     let paramsUrl = [
-      { title: "Trending Now", genres: 28 },
       { title: "Romance", genres: 10749 },
+      { title: "Thriller", genres: 53 },
       { title: "Horror", genres: 27 },
       { title: "Top Rated", genres: 35 },
     ];
