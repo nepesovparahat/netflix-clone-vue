@@ -15,7 +15,7 @@
 import MovieSwiper from "@/components/swiper/MovieSwiper.vue";
 import Hero from "@/components/hero/Hero.vue";
 export default {
-  name:"Home",
+  name: "Home",
   components: {
     MovieSwiper,
     Hero,

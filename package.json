@@ -13,7 +13,6 @@
     "swiper": "^6.7.5",
     "vue": "^3.0.5",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-carousel": "^0.18.0",
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
