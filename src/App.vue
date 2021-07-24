@@ -11,10 +11,6 @@ import HeaderComponent from "./components/shared/Header.vue";
 import FooterComponent from "./components/shared/Footer.vue";
 export default {
   components: { HeaderComponent, FooterComponent },
-  setup() {
-    return {};
-  },
 };
 </script>
 
-<style></style>

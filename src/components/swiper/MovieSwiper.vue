@@ -46,9 +46,9 @@ export default {
         slidesPerGroup: 2,
       },
       768: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 40,
-        slidesPerGroup: 4,
+        slidesPerGroup: 3,
       },
       1024: {
         slidesPerView: 5,

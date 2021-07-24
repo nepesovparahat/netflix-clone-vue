@@ -79,6 +79,7 @@ export default {
     @include font-size(22);
     font-weight: bold;
     @include mq(tablet) {
+      margin:0 40px;
       @include font-size(18);
     }
   }
@@ -89,6 +90,9 @@ export default {
     justify-content: space-between;
     margin-right: 10px;
     width: 300px;
+    @include mq(tablet){
+      width: 270px;
+    }
   }
 
   &__movie-btn {
@@ -110,6 +114,10 @@ export default {
     &--info {
       background-color: rgba(133, 133, 133, 0.7);
       color: $white;
+    }
+    @include mq(tablet){
+      @include font-size(14);
+      width: 120px;
     }
   }
 

@@ -6,7 +6,7 @@
         alt="header-logo"
         class="header__logo"
       />
-      <nav :class="[{ 'header__menu--active': isOpenMenu }, 'header__menu']">
+      <nav @click="toggleMenuHide" :class="[{ 'header__menu--active': isOpenMenu }, 'header__menu']">
         <router-link to="/" class="header__link">Home</router-link>
         <router-link to="/tv" class="header__link">TV Shows</router-link>
         <router-link to="/movies" class="header__link">Movies</router-link>
@@ -70,11 +70,14 @@ export default {
       isOpenMenu.value = !isOpenMenu.value;
     }
 
+    function toggleMenuHide(){
+      isOpenMenu.value = false;
+    }
     onMounted(() => {
       window.addEventListener("scroll", handleScroll);
     });
 
-    return { isScroll, isOpenMenu, toggleMenu };
+    return { isScroll, isOpenMenu, toggleMenu, toggleMenuHide };
   },
 };
 </script>

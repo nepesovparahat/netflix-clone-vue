@@ -1,6 +1,7 @@
 import { createApp } from "vue";
-import Main from "./Main.vue";
-import router from "./router";
 import SwiperCore, { Navigation } from "swiper/core";
+import App from "./App.vue";
+import router from "./router";
+
 SwiperCore.use([Navigation]);
-createApp(Main).use(router).mount("[app]");
+createApp(App).use(router).mount("#app");

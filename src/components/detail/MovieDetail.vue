@@ -157,7 +157,6 @@ export default {
       runtime.value = formatRuntime(movieDetail.value.runtime);
 
       releaseDate.value = formatDate(movieDetail.value.release_date);
-      console.log(`movieDetail.value`, movieDetail.value);
     }
 
     function formatRuntime(value) {
@@ -246,7 +245,7 @@ export default {
     justify-content: center;
     position: absolute;
     right: 300px;
-    top: 150px;
+    top: 100px;
     background: #000;
     @include mq(tablet) {
       position: absolute;
@@ -285,12 +284,12 @@ export default {
   }
 
   &__info {
-    padding: 20px 100px;
+    padding: 20px 10%;
     height: 500px;
     display: flex;
     @include mq(tablet) {
       padding: 70px 0;
-      height: 650px;
+      height: auto;
     }
   }
 
@@ -312,8 +311,8 @@ export default {
   }
 
   &__box {
-    display: flex;
-    width: 1300px;
+    display: flex;   
+    width: 100%;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.8);
     padding: 16px 50px;
@@ -399,13 +398,18 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
   }
   &__cast-img {
-    width: 170px;
-    height: 170px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: fill;
     margin: 20px 20px 0;
+    @include mq(tablet){
+      width: 120px;
+      height: 120px;
+    }
   }
   &__cast-info {
     display: flex;
