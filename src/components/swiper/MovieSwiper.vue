@@ -9,7 +9,7 @@
           :key="movie.id"
         >
           <img :src="baseImgUrl + movie.backdrop_path" alt="backdrop-image" />
-          <router-link :to="`/movie/${movie.id}`">
+          <router-link :to="`/movie/${movie.id}`" @click="scrollTop"> 
             <button class="movie-swiper__icon movie-swiper__icon--info"/>
           </router-link>
         </swiper-slide>
@@ -56,6 +56,11 @@ export default {
         slidesPerGroup: 5,
       },
     };
+   
+    function scrollTop(){
+      window.scrollTo(0, 0);
+    }
+
     async function fetchMovie() {
       const movieData = await axios
         .get(
@@ -75,6 +80,7 @@ export default {
       swiperMoviesData,
       movieSwiperTitle,
       breakpoints,
+      scrollTop,
     };
   },
 };

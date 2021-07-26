@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div v-if="activeModal && trailerId" class="movie-detail__watch-box">
+      <div v-if="activeModal" class="movie-detail__watch-box">
         <button @click="hideModal" class="movie-detail__watch-close-btn">
           ×
         </button>
@@ -285,7 +285,7 @@ export default {
 
   &__info {
     padding: 20px 10%;
-    height: 500px;
+    height: auto;
     display: flex;
     @include mq(tablet) {
       padding: 70px 0;
@@ -312,12 +312,12 @@ export default {
 
   &__box {
     display: flex;   
-    width: 100%;
+    width: auto;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.8);
     padding: 16px 50px;
     color: $white;
-    background-size: 600px 100%;
+    background-size: 450px 100%;
     background-position: right top;
     background-repeat: no-repeat;
     border-radius: 25px;
@@ -347,7 +347,7 @@ export default {
   }
 
   &__overview-text {
-    width: 45%;
+    width: 60%;
     @include mq(tablet) {
       width: 100%;
     }
@@ -428,7 +428,7 @@ export default {
     padding: 10px;
     outline: none;
     border: none;
-    margin-top: 20px;
+    margin: 20px 0;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
