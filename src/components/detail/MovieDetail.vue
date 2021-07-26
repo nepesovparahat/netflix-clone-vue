@@ -258,22 +258,29 @@ export default {
   }
 
   &__iframe-watch {
-    padding: 50px;
+    padding: 25px;
   }
 
   &__watch-close-btn {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: 15px;
+    right: 15px;
     border-radius: 50%;
     outline: none;
-    border: 1px solid $white;
+    border:none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-color: transparent;
-    color: $white;
-    @include font-size(20);
+    color: rgba(214, 213, 213, 0.867);
+    @include font-size(22);
+    &:hover{
+      color:$white;
+    }
   }
 
   &__content {
