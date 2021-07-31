@@ -4,12 +4,6 @@ const path = require("path");
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  optimizeDeps: {
-    include: ["swiper/vue"],
-  },
-  define: {
-    'process.env': process.env
-  },
   plugins: [vue()],
   alias: {
     "@": path.resolve(__dirname, "./src"),

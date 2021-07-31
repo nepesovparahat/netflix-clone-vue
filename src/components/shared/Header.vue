@@ -42,13 +42,14 @@
             alt="avatar-icon"
             class="header__options-icon"
           />
-        </div>
-      </div>
-      <button @click="toggleMenu" class="header__navbar-burger">
+          <button @click="toggleMenu" class="header__navbar-burger">
         <div class="header__burger-line"></div>
         <div class="header__burger-line"></div>
         <div class="header__burger-line"></div>
       </button>
+        </div>
+      </div>
+      
     </div>
   </header>
 </template>
@@ -98,6 +99,9 @@ export default {
     width: 100%;
     padding: 0 40px 0 20px;
     justify-content: space-between;
+    @include mq(tablet){
+      padding: 0 10px;
+    }
     height: 70px;
     &--bg {
       background-color: #292626;
@@ -105,7 +109,7 @@ export default {
   }
   &__logo {
     @include mq(tablet) {
-      width: 80px;
+      width: 50px;
       margin: 0;
       padding: 0;
     }
@@ -152,10 +156,7 @@ export default {
     width: 230px;
     height: 25px;
     @include mq(tablet) {
-      width: 210px;
-    }
-    @include mq(mobile) {
-      width: 190px;
+      width: 170px;
     }
   }
 
@@ -186,10 +187,7 @@ export default {
       width: 200px;
       opacity: 1;
       @include mq(tablet) {
-        width: 180px;
-      }
-      @include mq(mobile) {
-        width: 160px;
+        width: 140px;
       }
     }
   }
@@ -202,9 +200,6 @@ export default {
     flex-grow: 0.1;
     color: $white;
     cursor: pointer;
-    @include mq(tablet) {
-      margin-right: 40px;
-    }
   }
 
   &__account {
@@ -234,9 +229,7 @@ export default {
   //navbar-burger
   &__navbar-burger {
     display: none;
-    position: absolute;
-    right: 5%;
-    top: 50%;
+    margin-top:32px;
     transform: translateY(-50%);
     @include mq(tablet) {
       display: block;

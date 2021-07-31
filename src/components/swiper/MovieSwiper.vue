@@ -119,8 +119,8 @@ export default {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-size: contain;
-    background-position: center center;
+    background-size: cover;
+    background-position:0;
     background-color: $black;
     outline: none;
     border: none;

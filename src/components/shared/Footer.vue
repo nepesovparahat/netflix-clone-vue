@@ -45,6 +45,11 @@ footer {
   background-color: $black;
 }
 .footer {
+  &__logo{
+    @include mq(tablet){
+      width: 80px;
+    }
+  }
   display: grid;
   grid-gap: 20px;
   padding: 50px 50px 0;
